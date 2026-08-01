@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for Sunikshaaaaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4eef1;
+    --bg-soft: #ede4e9;
+    --ink: #332f3a;
+    --ink-soft: #6e6674;
+    --accent: #9c7c98;
+    --gold: #c9a66b;
+    --bubble: #ffffff;
+    --bubble-mine: #d8c6d5;
+  }
+  *{ box-sizing: border-box; }
+  html{ -webkit-tap-highlight-color: transparent; }
+  body{
+    margin:0;
+    min-height:100vh;
+    background: radial-gradient(120% 140% at 50% 0%, var(--bg) 0%, var(--bg-soft) 100%);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 32px 16px;
+    overflow-x:hidden;
+  }
+
+  .stage{
+    width:100%;
+    max-width: 420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 28px;
+  }
+
+  .eyebrow{
+    font-family:'Karla', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align:center;
+    opacity:0;
+    animation: fadeIn 0.9s ease forwards;
+    animation-delay: 0.1s;
+  }
+
+  .headline{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 7vw, 40px);
+    line-height:1.15;
+    text-align:center;
+    margin: 0;
+    opacity:0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.35s;
+  }
+
+  .headline .name{
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* phone chat mock */
+  .phone{
+    width:100%;
+    background: var(--bubble);
+    border-radius: 26px;
+    padding: 20px 16px 18px;
+    box-shadow: 0 24px 60px -20px rgba(51,47,58,0.35), 0 2px 8px rgba(51,47,58,0.06);
+    opacity:0;
+    animation: riseIn 0.8s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay: 0.7s;
+    position:relative;
+  }
+
+  .phone::before{
+    content:"";
+    position:absolute;
+    top:8px; left:50%;
+    transform: translateX(-50%);
+    width:44px; height:4px;
+    border-radius:4px;
+    background: #e4dbe2;
+  }
+
+  .thread{
+    margin-top: 14px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height: 190px;
+  }
+
+  .bubble{
+    max-width: 82%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14.5px;
+    line-height:1.45;
+    opacity:0;
+    transform: translateY(6px);
+  }
+
+  .bubble.them{
+    align-self:flex-start;
+    background: var(--bg-soft);
+    color: var(--ink);
+    border-bottom-left-radius: 5px;
+  }
+
+  .caret{
+    display:inline-block;
+    width:2px;
+    height:1em;
+    background: var(--ink-soft);
+    margin-left:2px;
+    vertical-align: -2px;
+    animation: blink 0.9s step-end infinite;
+  }
+
+  .cta{
+    margin-top: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .cta.show{ opacity: 1; pointer-events: auto; }
+
+  .btn{
+    font-family:'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), #86678a);
+    border: none;
+    padding: 13px 28px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px -10px rgba(156,124,152,0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px -10px rgba(156,124,152,0.8); }
+  .btn:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .signature{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align:center;
+    opacity:0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeIn{ to{ opacity:1; } }
+  @keyframes riseIn{ to{ opacity:1; transform: translateY(0); } }
+  @keyframes blink{ 50%{ opacity:0; } }
+  @keyframes bubbleIn{ to{ opacity:1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <p class="eyebrow">a small something · friendship day</p>
+    <h1 class="headline">for <span class="name">Sunikshaaaaa</span></h1>
+
+    <div class="phone">
+      <div class="thread" id="thread"></div>
+      <div class="cta" id="cta">
+        <button class="btn" id="openBtn">open it →</button>
+      </div>
+    </div>
+
+    <p class="signature">— from the one who's always one text away</p>
+  </div>
+
+<script>
+  const lines = [
+    "hey.",
+    "before you scroll past this like a normal message...",
+    "i made you something. give it a sec 🫂"
+  ];
+
+  const thread = document.getElementById('thread');
+  const cta = document.getElementById('cta');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function typeLine(text, container){
+    return new Promise(resolve => {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble them';
+      container.appendChild(bubble);
+
+      if(prefersReduced){
+        bubble.textContent = text;
+        bubble.style.opacity = 1;
+        bubble.style.transform = 'translateY(0)';
+        resolve();
+        return;
+      }
+
+      bubble.style.animation = 'bubbleIn 0.35s ease forwards';
+      const caret = document.createElement('span');
+      caret.className = 'caret';
+
+      let i = 0;
+      const speed = 28;
+      function tick(){
+        if(i <= text.length){
+          bubble.textContent = text.slice(0, i);
+          bubble.appendChild(caret);
+          i++;
+          setTimeout(tick, speed);
+        } else {
+          caret.remove();
+          resolve();
+        }
+      }
+      tick();
+    });
+  }
+
+  async function playThread(){
+    for(const line of lines){
+      await typeLine(line, thread);
+      await new Promise(r => setTimeout(r, 450));
+    }
+    cta.classList.add('show');
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(playThread, prefersReduced ? 0 : 1300);
+  });
+
+  document.getElementById('openBtn').addEventListener('click', () => {
+    // Stage 2 (memories/letter page) will be linked here.
+    window.location.href = 'letter.html';
+  });
+</script>
+
+</body>
+</html>

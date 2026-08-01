@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for Sunikshaaaaa — the letter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4eef1;
+    --bg-soft: #ede4e9;
+    --card: #ffffff;
+    --ink: #332f3a;
+    --ink-soft: #6e6674;
+    --accent: #9c7c98;
+    --accent-deep: #7a5c78;
+    --gold: #c9a66b;
+    --line: #e6dce3;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: radial-gradient(120% 60% at 50% 0%, var(--bg) 0%, var(--bg-soft) 100%);
+    color: var(--ink);
+    font-family:'Karla', sans-serif;
+    display:flex;
+    justify-content:center;
+    padding: 48px 16px 80px;
+  }
+
+  main{ width:100%; max-width: 520px; }
+
+  .kicker{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color: var(--ink-soft);
+    text-align:center;
+    margin: 0 0 10px;
+    opacity:0;
+    animation: rise 0.8s ease forwards;
+  }
+
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(26px, 6vw, 34px);
+    line-height:1.2;
+    text-align:center;
+    margin: 0 0 40px;
+    opacity:0;
+    animation: rise 0.9s ease forwards;
+    animation-delay: 0.1s;
+  }
+
+  section{
+    margin-bottom: 34px;
+    opacity:0;
+    transform: translateY(14px);
+  }
+  section.in-view{
+    animation: rise 0.7s ease forwards;
+  }
+
+  .opening{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height:1.6;
+    text-align:center;
+    color: var(--accent-deep);
+    padding: 0 8px;
+  }
+
+  .divider{
+    width: 40px;
+    height: 1px;
+    background: var(--line);
+    margin: 34px auto;
+  }
+
+  .card{
+    background: var(--card);
+    border-radius: 18px;
+    padding: 22px 22px 20px;
+    box-shadow: 0 16px 40px -24px rgba(51,47,58,0.35);
+    margin-bottom: 16px;
+  }
+
+  .card .label{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent-deep);
+    margin: 0 0 8px;
+  }
+
+  .card p{
+    margin:0;
+    font-size: 14.5px;
+    line-height:1.65;
+    color: var(--ink);
+  }
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 20px;
+    text-align:center;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+
+  .promises{
+    list-style: none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .promises li{
+    background: var(--card);
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-size: 14px;
+    line-height:1.5;
+    display:flex;
+    gap: 10px;
+    box-shadow: 0 10px 26px -20px rgba(51,47,58,0.3);
+  }
+  .promises li::before{
+    content: "✓";
+    color: var(--gold);
+    font-weight: 600;
+    flex-shrink:0;
+  }
+
+  details.roast{
+    margin-top: 6px;
+    text-align:center;
+  }
+  details.roast summary{
+    cursor:pointer;
+    font-size: 13px;
+    color: var(--ink-soft);
+    list-style:none;
+    display:inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  details.roast summary::-webkit-details-marker{ display:none; }
+  .roast-list{
+    margin-top: 16px;
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+    text-align:left;
+  }
+  .roast-list p{
+    margin:0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-style: italic;
+    padding-left: 4px;
+    border-left: 2px solid var(--line);
+    padding: 4px 0 4px 12px;
+  }
+
+  .final{
+    background: linear-gradient(160deg, #fff 0%, var(--bg-soft) 130%);
+    border-radius: 20px;
+    padding: 30px 24px;
+    box-shadow: 0 20px 48px -26px rgba(51,47,58,0.4);
+  }
+  .final .label{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent-deep);
+    text-align:center;
+    margin: 0 0 16px;
+  }
+  .final p{
+    font-size: 14.5px;
+    line-height:1.75;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .final p:last-child{ margin-bottom:0; }
+  .final .sign{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    text-align:right;
+    color: var(--accent-deep);
+    margin-top: 18px;
+  }
+
+  .nav-row{
+    display:flex;
+    justify-content:center;
+    gap: 14px;
+    margin-top: 44px;
+  }
+
+  .btn{
+    font-family:'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    border:none;
+    padding: 13px 26px;
+    border-radius: 999px;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow: 0 10px 24px -10px rgba(156,124,152,0.7);
+    transition: transform 0.25s ease;
+    display:inline-block;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn.ghost{
+    background: transparent;
+    color: var(--ink-soft);
+    box-shadow:none;
+    border: 1px solid var(--line);
+  }
+  .btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+  @keyframes rise{ to{ opacity:1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    section{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="kicker">friendship day · 2026</p>
+  <h1 class="title">a letter for <em>you</em></h1>
+
+  <section class="in-view">
+    <p class="opening">We met recently, but somehow you became one of my favorite people faster than I ever expected.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="card">
+      <p class="label">Why you're so special</p>
+      <p>I never thought someone I met so recently would become this important to me. Thank you for always listening, caring, and making every day a little better.</p>
+    </div>
+    <div class="card">
+      <p class="label">Our daily routine</p>
+      <p>From "good morning" to "good night," somehow we always find something to talk about. Even the smallest part of my day feels incomplete if I don't tell you about it.</p>
+    </div>
+    <div class="card">
+      <p class="label">Real talk</p>
+      <p>I don't know what the future holds, but I genuinely hope we never lose what we have now. You're someone I want to keep in my life for a very long time.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2 class="section-title">a few promises</h2>
+    <ul class="promises">
+      <li>I'll reply even when I'm half asleep.</li>
+      <li>I'll remind you to eat and drink water.</li>
+      <li>I'll listen to all your random stories.</li>
+      <li>I'll annoy you whenever you disappear.</li>
+      <li>I'll celebrate your wins like they're mine.</li>
+      <li>I'll always be one text away.</li>
+    </ul>
+
+    <details class="roast">
+      <summary>okay one more thing... 👀</summary>
+      <div class="roast-list">
+        <p>Your reply speed depends entirely on your mood.</p>
+        <p>You always say "2 minutes"... it's never 2 minutes.</p>
+        <p>You somehow make overthinking look like a full-time job.</p>
+        <p>You say you're not hungry, then steal my food.</p>
+      </div>
+    </details>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="final">
+      <p class="label">Happy Friendship Day 💜</p>
+      <p>I still find it surprising how one random Instagram chat on July 31 at 10:30 PM became the beginning of something so special.</p>
+      <p>When we first started talking, I never imagined we would become this close. We met recently, but somehow you became someone who feels like a part of my everyday life.</p>
+      <p>From the first "Good Morning" to the last "Good Night," we somehow created our own little routine. I tell you about my day, my small things, my random thoughts — and somehow talking to you makes my day feel better.</p>
+      <p>I don't know exactly how to describe what you mean to me, but I know one thing — you became someone very important in my life. Sometimes I just randomly think about our conversations, our jokes, and the way we understand each other.</p>
+      <p>The best thing about our friendship is that it happened naturally. We didn't plan it, we didn't force it — it just happened. And I'm really thankful that it did.</p>
+      <p>You once told me I'm one of the most important people in your life because of the priority you give me. I want you to know your place in my life is just as special. Your care, your words, and your presence mean a lot to me.</p>
+      <p>Even though you're not in my college and we live a little far from each other, that distance never stopped us from being close. I hope no matter where life takes us, we always keep this bond — the same comfort, the same happiness we have now.</p>
+      <p>I hope we continue annoying each other, sharing random stories, laughing at stupid things, and being there for each other.</p>
+      <p>Thank you for entering my life unexpectedly and becoming one of the people I genuinely care about.</p>
+      <p class="sign">— always stay the same person who made this friendship so special 🫂</p>
+    </div>
+  </section>
+
+  <div class="nav-row">
+    <a href="index.html" class="btn ghost">← back</a>
+    <a href="memories.html" class="btn">our memories →</a>
+  </div>
+
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
